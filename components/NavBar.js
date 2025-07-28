@@ -11,6 +11,7 @@ const navItems = [
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -19,9 +20,20 @@ export default function NavBar() {
       setScrolled(isScrolled)
     }
 
+    const handleClickOutside = (event) => {
+      if (mobileMenuOpen && !event.target.closest('nav')) {
+        setMobileMenuOpen(false)
+      }
+    }
+
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    document.addEventListener('click', handleClickOutside)
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [mobileMenuOpen])
 
   return (
     <motion.nav
@@ -109,34 +121,49 @@ export default function NavBar() {
             className="md:hidden p-2 rounded-lg text-apple-700 hover:bg-apple-100 transition-colors duration-200"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
             </svg>
           </motion.button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay - You can expand this later */}
+      {/* Mobile Menu Overlay */}
       <motion.div
         initial={{ opacity: 0, height: 0 }}
-        animate={{ opacity: 0, height: 0 }}
+        animate={{ 
+          opacity: mobileMenuOpen ? 1 : 0, 
+          height: mobileMenuOpen ? 'auto' : 0 
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         className="md:hidden overflow-hidden"
       >
         <div className="px-4 py-2 space-y-1 glass border-t border-white/20">
           {navItems.map((item) => (
             <Link key={item.name} href={item.href}>
-              <span className={`block px-3 py-2 rounded-md text-sm font-medium ${
-                router.pathname === item.href
-                  ? 'text-blue-600 bg-blue-50'
-                  : 'text-apple-700 hover:text-blue-600 hover:bg-apple-50'
-              } transition-colors duration-200`}>
+              <button 
+                className={`w-full text-left block px-3 py-2 rounded-md text-sm font-medium ${
+                  router.pathname === item.href
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-apple-700 hover:text-blue-600 hover:bg-apple-50'
+                } transition-colors duration-200`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 {item.name}
-              </span>
+              </button>
             </Link>
           ))}
           <div className="pt-2">
-            <button className="w-full btn-apple text-sm">
+            <button 
+              className="w-full btn-apple text-sm"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Let's Talk
             </button>
           </div>

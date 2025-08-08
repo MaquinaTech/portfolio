@@ -4,18 +4,10 @@ import Experience from '@/components/Experience'
 import SkillsSection from '@/components/SkillsSection'
 import ProjectsSection from '@/components/ProjectsSection'
 import { motion } from 'framer-motion'
+import { fadeInUp } from '@/utils/animations'
+import Reveal from '@/components/Reveal'
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut"
-    }
-  }
-}
+const sectionVariants = fadeInUp(0, 50)
 
 export default function Home() {
   return (
@@ -24,12 +16,12 @@ export default function Home() {
       <HeroSection />
 
       {/* Work Experience Section */}
-      <motion.section
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+      <Reveal
+        as="section"
+        y={60}
         className="py-20 my-8 bg-white rounded-lg"
+        aria-labelledby="experience-heading"
+        threshold={0.25}
       >
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -39,7 +31,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-apple-900 mb-4">
+            <h2 id="experience-heading" className="text-4xl md:text-5xl font-bold text-apple-900 mb-4">
               Professional Journey
             </h2>
             <p className="text-xl text-apple-600 max-w-2xl mx-auto">
@@ -179,18 +171,18 @@ export default function Home() {
             </Experience>
           </div>
         </div>
-      </motion.section>
+  </Reveal>
 
       {/* Skills Section */}
       <SkillsSection />
 
       {/* Key Achievements Section */}
-      <motion.section
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+      <Reveal
+        as="section"
+        y={60}
         className="py-20 my-8 bg-white rounded-lg"
+        aria-labelledby="achievements-heading"
+        threshold={0.25}
       >
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -200,7 +192,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-apple-900 mb-4">
+            <h2 id="achievements-heading" className="text-4xl md:text-5xl font-bold text-apple-900 mb-4">
               Key Achievements
             </h2>
             <p className="text-xl text-apple-600 max-w-2xl mx-auto">
@@ -274,18 +266,18 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </motion.section>
+  </Reveal>
 
       {/* Projects Section */}
       <ProjectsSection />
 
       {/* Education Section */}
-      <motion.section
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+      <Reveal
+        as="section"
+        y={60}
         className="py-20 my-8 bg-gradient-to-br from-apple-50 to-blue-50 rounded-lg shadow-lg"
+        aria-labelledby="education-heading"
+        threshold={0.25}
       >
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -295,7 +287,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-apple-900 mb-4">
+            <h2 id="education-heading" className="text-4xl md:text-5xl font-bold text-apple-900 mb-4">
               Education & Learning
             </h2>
             <p className="text-xl text-apple-600 max-w-2xl mx-auto">
@@ -387,7 +379,7 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-      </motion.section>
+  </Reveal>
     </Layout>
   )
 }

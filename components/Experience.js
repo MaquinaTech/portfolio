@@ -1,37 +1,15 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { fadeInUp } from '@/utils/animations'
+import IconEmoji from './IconEmoji'
+import Reveal from './Reveal'
 
-const containerVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 30 
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-}
+const containerVariants = fadeInUp(0)
 
+// Height animation separated to avoid layout jank on first paint
 const contentVariants = {
-  hidden: { 
-    opacity: 0, 
-    height: 0,
-    transition: {
-      duration: 0.3
-    }
-  },
-  visible: { 
-    opacity: 1, 
-    height: "auto",
-    transition: {
-      duration: 0.4,
-      ease: "easeOut"
-    }
-  }
+  hidden: { opacity: 0, height: 0 },
+  visible: { opacity: 1, height: 'auto' }
 }
 
 export default function Experience({ title, company, period, children, icon }) {
@@ -42,7 +20,7 @@ export default function Experience({ title, company, period, children, icon }) {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: '-50px' }}
       whileHover={{ y: -2 }}
       className="group"
     >
@@ -52,6 +30,9 @@ export default function Experience({ title, company, period, children, icon }) {
           className="flex items-center justify-between cursor-pointer"
           onClick={() => setIsExpanded(!isExpanded)}
           whileTap={{ scale: 0.98 }}
+          role="button"
+          aria-expanded={isExpanded}
+          aria-controls={`exp-content-${company}`}
         >
           <div className="flex items-center space-x-4">
             {/* Company Icon/Avatar */}
@@ -60,7 +41,7 @@ export default function Experience({ title, company, period, children, icon }) {
               className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg"
             >
               {icon ? (
-                <span className="text-white text-xl">{icon}</span>
+                <IconEmoji size={28} className="text-white">{icon}</IconEmoji>
               ) : (
                 <span className="text-white font-bold text-sm">
                   {company.split(' ').map(word => word[0]).join('').slice(0, 2)}
@@ -109,8 +90,10 @@ export default function Experience({ title, company, period, children, icon }) {
         <motion.div
           variants={contentVariants}
           initial="hidden"
-          animate={isExpanded ? "visible" : "hidden"}
-          className="overflow-hidden"
+          animate={isExpanded ? 'visible' : 'hidden'}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          className="overflow-hidden will-change-[height]"
+          id={`exp-content-${company}`}
         >
           <div className="pt-4 mt-4 border-t border-apple-100">
             <motion.div
@@ -119,7 +102,12 @@ export default function Experience({ title, company, period, children, icon }) {
               transition={{ duration: 0.3, delay: isExpanded ? 0.1 : 0 }}
               className="text-apple-700 space-y-3"
             >
-              {children}
+              {/* Wrap dynamic children list items if plain <ul> provided */}
+              {Array.isArray(children) ? children.map((child, idx) => (
+                <Reveal key={idx} y={12} delay={0.02 * idx} className="block">
+                  {child}
+                </Reveal>
+              )) : children}
             </motion.div>
           </div>
         </motion.div>
@@ -127,15 +115,8 @@ export default function Experience({ title, company, period, children, icon }) {
         {/* Floating Progress Indicator */}
         <motion.div
           className="absolute top-4 right-4 w-2 h-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 1, 0.5]
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ scale: [1, 1.25, 1], opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
     </motion.div>

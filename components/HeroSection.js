@@ -1,26 +1,10 @@
-import { motion } from 'framer-motion'
+import { motion, LazyMotion, domAnimation } from 'framer-motion'
+import { fadeInUp, staggerContainer, scaleIn } from '@/utils/animations'
+import IconEmoji from './IconEmoji'
 
-const heroVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-      staggerChildren: 0.2
-    }
-  }
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
-}
+// Variants composed from central utilities
+const heroVariants = staggerContainer(0.18)
+const itemVariants = fadeInUp(0)
 
 const floatingElements = [
   { icon: "⚡", delay: 0, x: 100, y: -50 },
@@ -32,12 +16,12 @@ const floatingElements = [
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Floating Background Elements */}
       {floatingElements.map((element, index) => (
         <motion.div
           key={index}
-          className="absolute text-4xl opacity-10"
+          className="absolute opacity-10"
           style={{
             left: `calc(50% + ${element.x}px)`,
             top: `calc(50% + ${element.y}px)`,
@@ -53,7 +37,7 @@ export default function HeroSection() {
             ease: "easeInOut"
           }}
         >
-          {element.icon}
+          <IconEmoji size={48}>{element.icon}</IconEmoji>
         </motion.div>
       ))}
 
@@ -69,8 +53,8 @@ export default function HeroSection() {
           className="inline-flex items-center px-4 py-2 rounded-full bg-green-50 border border-green-200 mb-8"
         >
           <motion.div
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            animate={{ scale: [1, 1.15, 1] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
             className="w-2 h-2 bg-green-500 rounded-full mr-2"
           />
           <span className="text-green-700 text-sm font-medium">Available for new opportunities</span>
@@ -79,7 +63,7 @@ export default function HeroSection() {
         {/* Main Heading */}
         <motion.h1
           variants={itemVariants}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight tracking-tight"
         >
           <span className="block gradient-text">Senior Specialist</span>
           <span className="block text-apple-900">Developer</span>
@@ -137,10 +121,10 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Skills Preview */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap justify-center gap-3 mb-16"
-        >
+    <motion.div
+      variants={itemVariants}
+      className="flex flex-wrap justify-center gap-3 mb-16"
+    >
           {['React Native', 'Next.js', 'Laravel', 'Node.js', 'Firebase', 'TypeScript', 'Prisma', 'Monorepo'].map((skill, index) => (
             <motion.span
               key={skill}
@@ -163,7 +147,7 @@ export default function HeroSection() {
           <span className="text-apple-500 text-sm mb-2 font-medium">Scroll to explore</span>
           <motion.div
             animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
             className="p-2 rounded-full border border-apple-300 hover:bg-apple-50 transition-colors duration-200 cursor-pointer"
           >
             <svg className="w-5 h-5 text-apple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

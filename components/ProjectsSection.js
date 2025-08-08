@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { staggerContainer, fadeInUp } from '@/utils/animations'
+import IconEmoji from './IconEmoji'
 
 const projects = [
   {
@@ -58,24 +60,8 @@ const projects = [
 
 const categories = ["All", "Mobile", "Full Stack", "Enterprise", "FinTech"]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 }
-  }
-}
+const containerVariants = staggerContainer(0.12)
+const itemVariants = fadeInUp(0, 30)
 
 export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState("All")
@@ -108,7 +94,7 @@ export default function ProjectsSection() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-60px' }}
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
           {categories.map((category) => (
@@ -137,7 +123,7 @@ export default function ProjectsSection() {
           animate="visible"
           className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
         >
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
@@ -151,16 +137,12 @@ export default function ProjectsSection() {
               {/* Project Image */}
               <div className="relative h-64 md:h-80 bg-gradient-to-br from-blue-100 to-purple-100 overflow-hidden">
                 <motion.div
-                  animate={{
-                    scale: hoveredProject === project.id ? 1.1 : 1
-                  }}
-                  transition={{ duration: 0.6 }}
-                  className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center"
+                  animate={{ scale: hoveredProject === project.id ? 1.08 : 1 }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                  className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center will-change-transform"
                 >
                   <div className="text-white text-center">
-                    <svg className="w-16 h-16 mx-auto mb-4 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
+                    <IconEmoji size={64} className="opacity-80">🧩</IconEmoji>
                     <p className="text-lg font-medium opacity-80">Project Preview</p>
                   </div>
                 </motion.div>
@@ -169,10 +151,12 @@ export default function ProjectsSection() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
                   className="absolute inset-0 bg-black/60 flex items-center justify-center space-x-4"
                 >
                   <motion.a
                     href={project.links.live}
+                    aria-label={`${project.title} live demo`}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     className="p-3 bg-white rounded-full text-apple-900 hover:bg-blue-50 transition-colors duration-200"
@@ -184,6 +168,7 @@ export default function ProjectsSection() {
                   </motion.a>
                   <motion.a
                     href={project.links.github}
+                    aria-label={`${project.title} source code`}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     className="p-3 bg-white rounded-full text-apple-900 hover:bg-blue-50 transition-colors duration-200"
@@ -199,10 +184,10 @@ export default function ProjectsSection() {
                   <motion.div
                     initial={{ scale: 0, rotate: -12 }}
                     animate={{ scale: 1, rotate: -12 }}
-                    transition={{ delay: 0.3, type: "spring" }}
-                    className="absolute top-4 left-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold"
+                    transition={{ delay: 0.3, type: 'spring', stiffness: 180, damping: 12 }}
+                    className="absolute top-4 left-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1"
                   >
-                    FEATURED
+                    <IconEmoji size={16}>⭐</IconEmoji> FEATURED
                   </motion.div>
                 )}
               </div>

@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { fadeInUp, staggerContainer } from '@/utils/animations'
+import IconEmoji from './IconEmoji'
 
 const skillCategories = [
   {
@@ -40,7 +42,7 @@ const skillCategories = [
   },
   {
     title: "Leadership & Methodologies",
-    icon: "�",
+    icon: "🧠",
     skills: [
       { name: "Technical Leadership", level: 92, color: "bg-red-600" },
       { name: "Scrum Master", level: 88, color: "bg-orange-500" },
@@ -52,24 +54,8 @@ const skillCategories = [
   }
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 }
-  }
-}
+const containerVariants = staggerContainer(0.1)
+const itemVariants = fadeInUp(0, 20)
 
 export default function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState(0)
@@ -97,7 +83,7 @@ export default function SkillsSection() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-50px' }}
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
           {skillCategories.map((category, index) => (
@@ -113,7 +99,7 @@ export default function SkillsSection() {
                   : 'bg-white text-apple-700 hover:bg-blue-50 border border-apple-200'
               }`}
             >
-              <span className="mr-2">{category.icon}</span>
+              <IconEmoji size={20} className="mr-2">{category.icon}</IconEmoji>
               {category.title}
             </motion.button>
           ))}
@@ -122,9 +108,9 @@ export default function SkillsSection() {
         {/* Skills Grid */}
         <motion.div
           key={activeCategory}
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
         >
           {skillCategories[activeCategory].skills.map((skill, index) => (
@@ -147,7 +133,7 @@ export default function SkillsSection() {
                   className={`h-full rounded-full ${skill.color}`}
                   initial={{ width: 0 }}
                   animate={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: 0.5 + index * 0.1, ease: "easeOut" }}
+                  transition={{ duration: 0.9, delay: 0.4 + index * 0.08, ease: [0.22,1,0.36,1] }}
                 />
               </div>
               

@@ -13,7 +13,7 @@ const skillCategories = [
       { name: "React", level: 95, color: "bg-blue-600" },
       { name: "TypeScript", level: 88, color: "bg-blue-700" },
       { name: "Alpine.js", level: 85, color: "bg-teal-500" },
-      { name: "React Native Skia", level: 80, color: "bg-purple-600" },
+      { name: "React Native Skia", level: 80, color: "bg-purple-600" }
     ]
   },
   {
@@ -37,7 +37,19 @@ const skillCategories = [
       { name: "Docker", level: 85, color: "bg-blue-500" },
       { name: "Firebase", level: 90, color: "bg-yellow-600" },
       { name: "Google Cloud", level: 80, color: "bg-blue-600" },
-      { name: "REST APIs", level: 95, color: "bg-green-500" },
+      { name: "REST APIs", level: 95, color: "bg-green-500" }
+    ]
+  },
+  {
+    title: "AI & Automation",
+    icon: "🤖",
+    skills: [
+      { name: "LLM Integrations", level: 85, color: "bg-indigo-500" },
+      { name: "RAG Pipelines", level: 82, color: "bg-blue-500" },
+      { name: "Predictive Notifications", level: 88, color: "bg-purple-500" },
+      { name: "Realtime Systems", level: 86, color: "bg-emerald-500" },
+      { name: "Data Pipelines", level: 78, color: "bg-sky-500" },
+      { name: "Automation", level: 90, color: "bg-teal-600" }
     ]
   },
   {
@@ -61,7 +73,7 @@ export default function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState(0)
 
   return (
-    <section className="py-20 my-8 bg-gradient-to-br from-apple-50 to-blue-50 rounded-lg shadow-lg">
+    <section id="skills" className="py-20 my-8 bg-gradient-to-br from-apple-50 to-blue-50 rounded-2xl shadow-xl border border-white/60">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -156,7 +168,7 @@ export default function SkillsSection() {
         >
           {[
             { number: "6+", label: "Years Experience" },
-            { number: "10.000+", label: "Users Served" },
+            { number: "10K+", label: "Users Served" },
             { number: "20+", label: "Technologies Mastered" },
             { number: "5+", label: "Teams Led" },
           ].map((stat, index) => (

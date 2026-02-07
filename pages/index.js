@@ -4,10 +4,7 @@ import Experience from '@/components/Experience'
 import SkillsSection from '@/components/SkillsSection'
 import ProjectsSection from '@/components/ProjectsSection'
 import { motion } from 'framer-motion'
-import { fadeInUp } from '@/utils/animations'
 import Reveal from '@/components/Reveal'
-
-const sectionVariants = fadeInUp(0, 50)
 
 export default function Home() {
   return (
@@ -18,8 +15,9 @@ export default function Home() {
       {/* Work Experience Section */}
       <Reveal
         as="section"
+        id="experience"
         y={60}
-        className="py-20 my-8 bg-white rounded-lg"
+        className="py-20 my-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/60"
         aria-labelledby="experience-heading"
         threshold={0.25}
       >
@@ -66,6 +64,32 @@ export default function Home() {
                 <li className="flex items-start space-x-3">
                   <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
                   <span><strong>Business Impact:</strong> Contributed to App Store positioning and increased app listing value while reducing user inactivity through personalized AI-generated notifications.</span>
+                </li>
+              </ul>
+            </Experience>
+
+            <Experience 
+              title="Systems Architect" 
+              company="Enterprise LLM Multi-Agent Platform" 
+              period="04-2024 - Present"
+              icon="🤖"
+            >
+              <ul className="space-y-3 text-apple-700">
+                <li className="flex items-start space-x-3">
+                  <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong>On-Prem LLM Infrastructure:</strong> Designed a secure, self-managed LLM platform ensuring data sovereignty and compliance.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong>Multi-Agent Orchestration:</strong> Built a specialized agent system for ERP/CRM operations through a natural language interface.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong>RAG Pipelines:</strong> Implemented guardrails and retrieval pipelines for context-aware, role-based responses.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong>Impact:</strong> Reduced data retrieval time by 70% while increasing adoption of ERP/CRM features.</span>
                 </li>
               </ul>
             </Experience>
@@ -145,6 +169,28 @@ export default function Home() {
             </Experience>
 
             <Experience 
+              title="Full Stack Developer (Freelance)" 
+              company="IoT Home Automation Mobile App" 
+              period="2020 - 2021"
+              icon="🏡"
+            >
+              <ul className="space-y-3 text-apple-700">
+                <li className="flex items-start space-x-3">
+                  <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong>Smart Home Control:</strong> Built a React Native app to monitor and control IoT devices (lights, sensors, AC, blinds, irrigation) in real time.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong>Native Integrations:</strong> Leveraged device APIs for low-latency interactions and optimized performance.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong>Security:</strong> Implemented secure communication and data handling for home automation workflows.</span>
+                </li>
+              </ul>
+            </Experience>
+
+            <Experience 
               title="Freelance Full Stack Developer" 
               company="Various Clients" 
               period="2018 - 2024"
@@ -153,15 +199,11 @@ export default function Home() {
               <ul className="space-y-3 text-apple-700">
                 <li className="flex items-start space-x-3">
                   <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
-                  <span><strong>IoT Smart Home (2020-2021):</strong> React Native app for Arduino-based IoT home automation with real-time monitoring and control of lights, sensors, AC, blinds, and irrigation.</span>
+                  <span><strong>ERP Systems:</strong> Developed comprehensive ERP for Celmet S.L. with signature system, payment processing, and invoice generation using Laravel and REST APIs.</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
-                  <span><strong>ERP Systems:</strong> Developed comprehensive ERP for Celmet S.L. (metals trading company) with signature system, payment processing, and invoice generation using Laravel and REST APIs.</span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
-                  <span><strong>Sports Management:</strong> Led development of competition management applications for tennis, cycling, and racing with advanced design patterns and team coordination.</span>
+                  <span><strong>Sports Management:</strong> Led development of competition management applications for tennis, cycling, and racing with advanced design patterns.</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
@@ -179,8 +221,9 @@ export default function Home() {
       {/* Key Achievements Section */}
       <Reveal
         as="section"
+        id="achievements"
         y={60}
-        className="py-20 my-8 bg-white rounded-lg"
+        className="py-20 my-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/60"
         aria-labelledby="achievements-heading"
         threshold={0.25}
       >
@@ -204,38 +247,38 @@ export default function Home() {
             {[
               {
                 icon: "🤖",
-                title: "AI-Powered Gaming",
-                description: "Implemented custom AI system with fine-tuning for predictive notifications that increase user interaction time in mobile gaming apps.",
+                title: "LLM Multi-Agent Platform",
+                description: "Designed on-premise LLM infrastructure with multi-agent orchestration and RAG pipelines for ERP/CRM operations.",
                 color: "from-blue-500 to-purple-600"
               },
               {
                 icon: "📈",
-                title: "Scaled to 10.000+ Users",
-                description: "Built and deployed 4 React Native applications serving over 600 employees across Blendio and associated companies with real-time OTA updates.",
+                title: "Scaled 10K+ Users",
+                description: "Delivered mobile platforms and OTA updates serving thousands of users across enterprise environments.",
                 color: "from-green-500 to-blue-500"
               },
               {
                 icon: "🏗️",
-                title: "Monorepo Architecture",
-                description: "Designed and implemented monorepo architecture enhancing collaboration and scalability for complex mobile and web applications.",
+                title: "Monorepo & Microservices",
+                description: "Built scalable monorepo architectures that improved collaboration and deployment velocity.",
                 color: "from-purple-500 to-pink-500"
               },
               {
                 icon: "⚡",
                 title: "Performance Optimization",
-                description: "Reduced deployment time by 60% and significantly improved resource efficiency through clean code practices and microservices architecture.",
+                description: "Reduced deployment time by 60% and elevated app responsiveness with clean architecture practices.",
                 color: "from-orange-500 to-red-500"
               },
               {
                 icon: "🎮",
                 title: "Game Engine Integration",
-                description: "Developed games using MatterJs graphics engine and native element rendering with React Native Skia for superior performance.",
+                description: "Shipped high-performance game experiences using MatterJs and React Native Skia.",
                 color: "from-teal-500 to-cyan-500"
               },
               {
                 icon: "💰",
-                title: "FinTech Integration",
-                description: "Successfully integrated secure payment systems (MangoPay, Tink) and transaction tracking across web and mobile platforms.",
+                title: "FinTech & Payments",
+                description: "Integrated MangoPay and Tink for secure transactions across web and mobile channels.",
                 color: "from-yellow-500 to-orange-500"
               }
             ].map((achievement, index) => (
@@ -274,8 +317,9 @@ export default function Home() {
       {/* Education Section */}
       <Reveal
         as="section"
+        id="education"
         y={60}
-        className="py-20 my-8 bg-gradient-to-br from-apple-50 to-blue-50 rounded-lg shadow-lg"
+        className="py-20 my-8 bg-gradient-to-br from-apple-50 to-blue-50 rounded-2xl shadow-xl border border-white/60"
         aria-labelledby="education-heading"
         threshold={0.25}
       >
@@ -299,24 +343,24 @@ export default function Home() {
             {[
               {
                 title: "Universidad de Extremadura",
-                subtitle: "Computer Software Engineering",
-                description: "Research project BigData I3Lab (Quercus). Specialized in Python, Java, design patterns, UX, databases, exception control, documentation, testing, algorithms, and LLMs.",
+                subtitle: "Software Engineering (2019 - 2024)",
+                description: "Research project BigData I3Lab (Quercus). Specialized in Python, Java, design patterns, UX, databases, testing, algorithms, and LLM foundations.",
                 icon: "🎓",
                 color: "from-blue-500 to-purple-600"
               },
               {
-                title: "Self-Directed Learning",
-                subtitle: "Continuous Technology Mastery",
-                description: "Autodidact approach to mastering Laravel, NextJs, React Native, AlpineJs, VueJs, Domain Driven Design, Test Driven Design, API Rest, Nginx, Apache, and Cybersecurity.",
-                icon: "📚",
-                color: "from-green-500 to-blue-500"
+                title: "International University of Valencia",
+                subtitle: "AI & Data Science Engineering (2025 - Present)",
+                description: "Advanced studies in AI, data science, and engineering, focused on applied machine learning, analytics, and scalable systems.",
+                icon: "🧠",
+                color: "from-purple-500 to-pink-500"
               },
               {
-                title: "I.E.S Maestro Domingo Cáceres",
-                subtitle: "Bachelor of Science",
-                description: "Specialization in Mathematics and Physics, building strong analytical and problem-solving foundations that support complex software architecture decisions.",
-                icon: "🔬",
-                color: "from-purple-500 to-pink-500"
+                title: "Independent Research & Self-Learning",
+                subtitle: "Continuous Mastery",
+                description: "Autodidact focus on Laravel, Next.js, React Native, DDD/TDD, cybersecurity, cloud platforms, and automation workflows.",
+                icon: "📚",
+                color: "from-green-500 to-blue-500"
               }
             ].map((edu, index) => (
               <motion.div

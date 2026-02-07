@@ -35,9 +35,12 @@ export default function Layout({ children }) {
       
       {/* Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        <div className="aurora" />
+        <div className="aurora-surface" />
+        <div className="mesh-grid" />
+        <div className="absolute -top-48 -right-32 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-25 animate-pulse" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-2xl opacity-25 animate-pulse animation-delay-2000" />
+        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] bg-indigo-200 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-pulse animation-delay-4000" />
       </div>
 
       <NavBar />

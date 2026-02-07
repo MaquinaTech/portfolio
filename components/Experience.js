@@ -24,7 +24,7 @@ export default function Experience({ title, company, period, children, icon }) {
       whileHover={{ y: -2 }}
       className="group"
     >
-      <div className="card-apple hover:shadow-2xl transition-all duration-300 border-l-4 border-blue-500 hover:border-blue-600">
+      <div className="card-apple hover:shadow-2xl transition-all duration-300 border-l-4 border-blue-500 hover:border-blue-600 relative overflow-hidden">
         {/* Header */}
         <motion.div
           className="flex items-center justify-between cursor-pointer"

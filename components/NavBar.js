@@ -104,13 +104,15 @@ export default function NavBar() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="hidden sm:block"
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-apple text-sm"
-            >
-              Let's Talk
-            </motion.button>
+            <Link href="/contact" className="inline-block">
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-apple text-sm inline-flex"
+              >
+                Let's Talk
+              </motion.span>
+            </Link>
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -160,12 +162,14 @@ export default function NavBar() {
             </Link>
           ))}
           <div className="pt-2">
-            <button 
-              className="w-full btn-apple text-sm"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Let's Talk
-            </button>
+            <Link href="/contact" className="block">
+              <button 
+                className="w-full btn-apple text-sm"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Let's Talk
+              </button>
+            </Link>
           </div>
         </div>
       </motion.div>

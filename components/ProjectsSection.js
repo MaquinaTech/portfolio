@@ -7,11 +7,12 @@ const projects = [
   {
     id: 1,
     title: "Laurel Gaming Mobile App",
-    description: "Led mobile app development using React Native with monorepo architecture. Implemented predictive notifications and gamification features.",
+    description: "Led the end-to-end mobile experience with monorepo architecture, AI-driven predictive notifications, and multi-layered gamification loops.",
     image: "/api/placeholder/600/400",
-    technologies: ["React Native", "Monorepo", "TypeScript", "Push Notifications"],
+    technologies: ["React Native", "Monorepo", "TypeScript", "Firebase", "Skia"],
     category: "Mobile",
     featured: true,
+    impact: ["Retention uplift with AI nudges", "Skia-powered animations", "Scalable release pipeline"],
     links: {
       live: "#",
       github: "#"
@@ -20,11 +21,12 @@ const projects = [
   {
     id: 2,
     title: "Fundecyt Employee Management",
-    description: "Developed comprehensive employee management tools with Laravel backend and React Native mobile app.",
+    description: "Built workforce productivity tools, mobile time tracking, and automated deployment workflows for a multi-team environment.",
     image: "/api/placeholder/600/400",
-    technologies: ["Laravel", "React Native", "REST API", "MySQL"],
+    technologies: ["Laravel", "React Native", "REST API", "MySQL", "Docker"],
     category: "Full Stack",
     featured: true,
+    impact: ["Scrum + Kanban adoption", "Tooling integrations", "Process automation"],
     links: {
       live: "#",
       github: "#"
@@ -33,11 +35,12 @@ const projects = [
   {
     id: 3,
     title: "Grupo Blendio Management Platform",
-    description: "Created management tools and mobile apps serving 600+ employees with OTA updates and secure API Gateway.",
+    description: "Delivered enterprise management tools and mobile apps with OTA updates, centralized API Gateway, and advanced permissions.",
     image: "/api/placeholder/600/400",
-    technologies: ["Laravel", "React Native", "API Gateway", "OTA Updates"],
+    technologies: ["Laravel", "React Native", "API Gateway", "Redis", "OTA Updates"],
     category: "Enterprise",
     featured: false,
+    impact: ["600+ employees served", "Realtime OTA updates", "Secure auth + analytics"],
     links: {
       live: "#",
       github: "#"
@@ -46,11 +49,40 @@ const projects = [
   {
     id: 4,
     title: "WealtyApp Platform",
-    description: "Led platform development with Next.js frontend and React Native mobile app. Integrated payment systems.",
+    description: "Shipped FinTech experience across web and mobile with integrated payment systems and automated deployments.",
     image: "/api/placeholder/600/400",
-    technologies: ["Next.js", "React Native", "Payment Integration", "Deployment Automation"],
+    technologies: ["Next.js", "React Native", "MangoPay", "Tink", "Firebase"],
     category: "FinTech",
     featured: false,
+    impact: ["Payment orchestration", "Cross-platform UX", "Automated release flow"],
+    links: {
+      live: "#",
+      github: "#"
+    }
+  },
+  {
+    id: 5,
+    title: "Enterprise LLM Multi-Agent Platform",
+    description: "Architected an on-premise LLM multi-agent platform with RAG pipelines, secure permissions, and ERP/CRM integrations.",
+    image: "/api/placeholder/600/400",
+    technologies: ["LLMs", "RAG", "Python", "APIs", "Security"],
+    category: "AI Platform",
+    featured: true,
+    impact: ["70% faster retrieval", "Role-based access", "Conversation-first UX"],
+    links: {
+      live: "#",
+      github: "#"
+    }
+  },
+  {
+    id: 6,
+    title: "IoT Smart Home Automation",
+    description: "Created a React Native smart home control suite with real-time sensor monitoring and device orchestration.",
+    image: "/api/placeholder/600/400",
+    technologies: ["React Native", "IoT", "Realtime", "Laravel API"],
+    category: "IoT",
+    featured: false,
+    impact: ["Live sensor dashboards", "Optimized device control", "Secure integrations"],
     links: {
       live: "#",
       github: "#"
@@ -58,7 +90,7 @@ const projects = [
   }
 ]
 
-const categories = ["All", "Mobile", "Full Stack", "Enterprise", "FinTech"]
+const categories = ["All", "Mobile", "Full Stack", "Enterprise", "FinTech", "AI Platform", "IoT"]
 
 const containerVariants = staggerContainer(0.12)
 const itemVariants = fadeInUp(0, 30)
@@ -72,7 +104,7 @@ export default function ProjectsSection() {
     : projects.filter(project => project.category === activeCategory)
 
   return (
-    <section className="py-20 my-8 bg-white rounded-lg">
+    <section id="projects" className="py-20 my-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/60">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -216,6 +248,19 @@ export default function ProjectsSection() {
                   {project.description}
                 </p>
 
+                {project.impact && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.impact.map((item) => (
+                      <span
+                        key={item}
+                        className="text-xs font-semibold text-apple-700 bg-white border border-apple-200 px-3 py-1 rounded-full"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, techIndex) => (
@@ -243,13 +288,14 @@ export default function ProjectsSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mt-16"
         >
-          <motion.button
+          <motion.a
+            href="/contact"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="btn-apple px-8 py-4 text-lg"
+            className="btn-apple px-8 py-4 text-lg inline-flex"
           >
-            View All Projects
-          </motion.button>
+            Start a Project
+          </motion.a>
         </motion.div>
       </div>
     </section>

@@ -5,22 +5,22 @@ const values = [
   {
     icon: "CodeBracketIcon",
     title: "Technical Excellence",
-    description: "Expert in clean, scalable code with global project vision. Highly versatile from databases to magnificent UX experiences."
+    description: "Expert in clean, scalable code with full-stack vision. From databases to delightful UX, quality is non-negotiable."
   },
   {
     icon: "LightBulbIcon",
     title: "Innovation & AI",
-    description: "Implementing cutting-edge AI systems with fine-tuning for predictive notifications and advanced gamification solutions."
+    description: "Designing AI systems, RAG pipelines, and automation workflows that unlock measurable product impact."
   },
   {
     icon: "UserGroupIcon",
     title: "Team Leadership",
-    description: "Proven ability to lead multidisciplinary teams, work efficiently both autonomously and collaboratively with decisive problem-solving."
+    description: "Leading multidisciplinary teams with clarity, accountability, and strong execution across product lifecycles."
   },
   {
     icon: "RocketLaunchIcon",
     title: "Business Impact",
-    description: "Proactive attitude with attention to detail, driving successful high-impact projects focused on execution excellence and continuous improvement."
+    description: "Focused on business outcomes, rapid iteration, and continuous improvement through high-impact delivery."
   }
 ]
 
@@ -31,6 +31,16 @@ const languages = [
 ]
 
 const journey = [
+  {
+    year: "2025",
+    title: "AI & Data Science Engineering",
+    description: "Pursuing advanced studies in AI, data science, and scalable systems at the International University of Valencia."
+  },
+  {
+    year: "2024",
+    title: "Systems Architecture & AI Platforms",
+    description: "Architected on-premise LLM multi-agent platforms with secure, role-based data access."
+  },
   {
     year: "2023",
     title: "Senior Developer Journey",
@@ -80,8 +90,7 @@ export default function About() {
             
             <p className="text-xl md:text-2xl text-apple-600 max-w-3xl mx-auto leading-relaxed">
               CTO and technology leader with 6+ years architecting scalable solutions. 
-              I excel working both autonomously and in teams, delivering innovative solutions 
-              from mobile gaming to enterprise systems.
+              I deliver innovative systems across mobile gaming, enterprise platforms, and AI automation.
             </p>
           </div>
         </motion.section>
@@ -92,7 +101,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="py-20 bg-white"
+          className="py-20 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/60"
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
@@ -114,9 +123,8 @@ export default function About() {
                     to deliver exceptional results.
                   </p>
                   <p className="text-lg">
-                    Currently serving as CTO at Laurel Gaming, I lead technological innovation 
-                    including AI systems with fine-tuning, game development with advanced engines, 
-                    and scalable mobile architectures that serve users across iOS and Android platforms.
+                    Currently serving as CTO at Laurel Gaming, I lead innovation across AI systems, 
+                    game development, and scalable mobile architectures that serve users across iOS and Android platforms.
                   </p>
                 </div>
               </div>
@@ -154,7 +162,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="py-20 bg-gradient-to-br from-apple-50 to-blue-50"
+          className="py-20 bg-gradient-to-br from-apple-50 to-blue-50 rounded-2xl shadow-xl border border-white/60"
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="text-center mb-16">
@@ -216,7 +224,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="py-20 bg-white"
+          className="py-20 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/60"
         >
           <div className="container mx-auto px-4 lg:px-8 text-center">
             <div className="mb-16">
@@ -254,7 +262,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="py-20 bg-gradient-to-br from-apple-50 to-blue-50"
+          className="py-20 bg-gradient-to-br from-apple-50 to-blue-50 rounded-2xl shadow-xl border border-white/60"
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="text-center mb-16">
@@ -321,7 +329,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="py-20 bg-white text-center"
+          className="py-20 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/60 text-center"
         >
           <div className="container mx-auto px-4 lg:px-8">
             <motion.div

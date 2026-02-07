@@ -99,7 +99,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="py-20 from-apple-50 to-blue-50"
+          className="py-20 bg-gradient-to-br from-apple-50 to-blue-50 rounded-2xl shadow-xl border border-white/60"
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -163,7 +163,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="py-20 bg-white rounded-lg shadow-lg"
+          className="py-20 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/60"
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -357,7 +357,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="py-20 from-apple-50 to-blue-50"
+          className="py-20 bg-gradient-to-br from-apple-50 to-blue-50 rounded-2xl shadow-xl border border-white/60"
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="text-center mb-16">
